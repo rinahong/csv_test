@@ -3,17 +3,27 @@ require 'bundler/setup'
 Bundler.require(:default)
 require 'csv'
 
+# Use Hash.new(0) to remove redundant lines.
 def parse_file(read_file)
-  domain_counts = {}
+  domain_counts = Hash.new(0)
   CSV.foreach(read_file) do |row|
-    domain = row[1].partition('@').last
-    unless domain_counts.has_key?(domain)
-      domain_counts[domain] = 0
-    end
+    domain = get_domain(row[1])
     domain_counts[domain] += 1
   end
   write_file(domain_counts, "output.csv")
 end
+
+# def parse_file(read_file)
+#   domain_counts = {}
+#   CSV.foreach(read_file) do |row|
+#     domain = row[1].partition('@').last
+#     unless domain_counts.has_key?(domain)
+#       domain_counts[domain] = 0
+#     end
+#     domain_counts[domain] += 1
+#   end
+#   write_file(domain_counts, "output.csv")
+# end
 
 def write_file(domain_counts, write_file)
   CSV.open(write_file, "wb") do |csv|
