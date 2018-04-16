@@ -28,12 +28,12 @@ module DomainCounter
     email_address.partition('@').last
   end
 
-  # def write_file(write_file)
-  #   CSV.open(write_file, "wb") do |csv|
-  #     csv << ["domain", "count"]
-  #     self.each do |key, value|
-  #       csv << [key, value.to_s]
-  #     end
-  #   end
-  # end
+  def write_file(write_file)
+    CSV.open(write_file, "wb") do |csv|
+      csv << ["domain", "count"]
+      self.each do |key, value|
+        csv << [key, value.to_s]
+      end
+    end
+  end
 end
