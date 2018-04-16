@@ -40,4 +40,6 @@ def get_domain(email_address)
   email_address.partition('@').last
 end
 
-parse_file("spec/fixtures/roster.csv")
+# If this is here, how many times is `parse_file` being called when we run the specs?
+#  -> With method's call below, 'parse_file' will be called twice when we run the specs
+# parse_file("spec/fixtures/roster.csv")
