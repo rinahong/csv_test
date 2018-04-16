@@ -10,7 +10,7 @@
 # Can you update the existing code to offer this interface?
 
 # ===== How to run in pry =====
-# load './lib/csv_skills_module.rb'
+# load './lib/csv_skills_class.rb'
 # counter = DomainCounter.new
 # counter.read_file("spec/fixtures/roster.csv")
 # counter.write_file("output.csv")

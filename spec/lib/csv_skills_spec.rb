@@ -1,4 +1,4 @@
-require 'csv_skills_module'
+require 'csv_skills_class'
 
 RSpec.describe "csv_skills" do
   it "generates a count of the domains used in email addresses" do
