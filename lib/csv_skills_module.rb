@@ -21,7 +21,7 @@ module DomainCounter
       domain = get_domain(row[1])
       domain_counts[domain] += 1
     end
-    # write_file(domain_counts, "output.csv")
+    domain_counts
   end
 
   def self.get_domain(email_address)
