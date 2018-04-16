@@ -9,6 +9,12 @@
 #
 # Can you update the existing code to offer this interface?
 
+# ===== How to run in pry =====
+# load './lib/csv_skills_module.rb'
+# counter = DomainCounter.read_file("spec/fixtures/roster.csv")
+# Hash.send(:include, DomainCounter)
+# counter.write_file("output.csv")
+
 require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
