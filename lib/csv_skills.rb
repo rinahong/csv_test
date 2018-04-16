@@ -27,3 +27,5 @@ def write_file(domain_counts)
     end
   end
 end
+
+parse_file
