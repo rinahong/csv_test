@@ -1,8 +1,10 @@
-require 'csv_skills'
+require 'csv_skills_module'
 
 RSpec.describe "csv_skills" do
   it "generates a count of the domains used in email addresses" do
-    parse_file("spec/fixtures/roster.csv")
+    counter = DomainCounter.read_file("spec/fixtures/roster.csv")
+    Hash.send(:include, DomainCounter)
+    counter.write_file("output.csv")
 
     expect(CSV.read("output.csv")).to eq([
       ["domain", "count"],
