@@ -19,6 +19,22 @@ def parse_file
   write_file(domain_counts)
 end
 
+# def parse_file
+#   data = File.read("spec/fixtures/roster.csv")
+#   domain_regex = /@([a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z])/
+#   domains_array = data.scan(domain_regex)
+#   domain_counts = {}
+#   domains_array.each do |domain|
+#     domain_string = domain.join()
+#     unless domain_counts.has_key?(domain_string)
+#       domain_counts[domain_string] = 0
+#     end
+#     domain_counts[domain_string] += 1
+#   end
+#   write_file(domain_counts)
+# end
+
+
 def write_file(domain_counts)
   CSV.open("output.csv", "wb") do |csv|
     csv << ["domain", "count"]
