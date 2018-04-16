@@ -25,6 +25,7 @@ end
 #   write_file(domain_counts, "output.csv")
 # end
 
+
 def write_file(domain_counts, write_file)
   CSV.open(write_file, "wb") do |csv|
     csv << ["domain", "count"]
@@ -32,6 +33,11 @@ def write_file(domain_counts, write_file)
       csv << [key, value.to_s]
     end
   end
+end
+
+#Extracting only domain name from email address
+def get_domain(email_address)
+  email_address.partition('@').last
 end
 
 parse_file("spec/fixtures/roster.csv")
