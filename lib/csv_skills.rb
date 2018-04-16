@@ -20,5 +20,10 @@ def parse_file
 end
 
 def write_file(domain_counts)
-  puts domain_counts
+  CSV.open("output.csv", "wb") do |csv|
+    csv << ["domain", "count"]
+    domain_counts.each do |key, value|
+      csv << [key, value.to_s]
+    end
+  end
 end
