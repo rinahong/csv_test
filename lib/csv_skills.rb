@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
 require 'csv'
+require 'benchmark'
 
 # Use Hash.new(0) to remove redundant lines.
 def parse_file(read_file)
@@ -13,17 +14,17 @@ def parse_file(read_file)
   write_file(domain_counts, "output.csv")
 end
 
-# def parse_file(read_file)
-#   domain_counts = {}
-#   CSV.foreach(read_file) do |row|
-#     domain = row[1].partition('@').last
-#     unless domain_counts.has_key?(domain)
-#       domain_counts[domain] = 0
-#     end
-#     domain_counts[domain] += 1
-#   end
-#   write_file(domain_counts, "output.csv")
-# end
+def parse_file_previous(read_file)
+  domain_counts = {}
+  CSV.foreach(read_file) do |row|
+    domain = row[1].partition('@').last
+    unless domain_counts.has_key?(domain)
+      domain_counts[domain] = 0
+    end
+    domain_counts[domain] += 1
+  end
+  write_file(domain_counts, "output.csv")
+end
 
 
 def write_file(domain_counts, write_file)
@@ -43,3 +44,7 @@ end
 # If this is here, how many times is `parse_file` being called when we run the specs?
 #  -> With method's call below, 'parse_file' will be called twice when we run the specs
 # parse_file("spec/fixtures/roster.csv")
+
+# Best Performed solution: Reading a whole file faster than reading line by line
+puts Benchmark.measure {parse_file("spec/fixtures/roster.csv")}
+puts Benchmark.measure {parse_file_previous("spec/fixtures/roster.csv")}
