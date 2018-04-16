@@ -12,7 +12,7 @@
 # ===== How to run in pry =====
 # load './lib/csv_skills_module.rb'
 # counter = DomainCounter.new
-# c.read_file("spec/fixtures/roster.csv")
+# counter.read_file("spec/fixtures/roster.csv")
 # counter.write_file("output.csv")
 
 require 'rubygems'
